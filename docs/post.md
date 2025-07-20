@@ -75,7 +75,7 @@ Data Constraints *(all fields are required)*
     .catch(error => console.error("Error:", error));
     ```
 
-## Success Response
+# Success Response
 **Condition**: If all params were provided and in the correct format.
 - Code: ```201``` ```CREATED```
 - Content: 
@@ -83,7 +83,7 @@ Data Constraints *(all fields are required)*
     { "message": "Event added successfully" } 
     ```
 
-## Error Response
+# Error Response
 **Condition**: If there's a missing parameter.
 - Code: ```400``` ```BAD REQUEST```
 - Content: 
