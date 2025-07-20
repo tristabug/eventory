@@ -25,7 +25,7 @@ Data Constraints *(all fields are required)*
         }'
     ```
     
-    - Example if event type is page_view, timestamp is "2025-07-19T14:00:00", user is user1, and the source url is google: 
+    **Example** if event type is page_view, timestamp is "2025-07-19T14:00:00", user is user1, and the source url is google: 
     ``` 
     curl -X POST http://127.0.0.1:5001/events \
         -H "Content-Type: application/json" \
@@ -56,7 +56,7 @@ Data Constraints *(all fields are required)*
     .catch(error => console.error("Error:", error));
     ```
 
-    - Example if event type is page_view, timestamp is "2025-07-19T14:00:00", user is user1, and the source url is google: 
+    **Example** if event type is page_view, timestamp is "2025-07-19T14:00:00", user is user1, and the source url is google: 
     ```javascript
     fetch("http://127.0.0.1:5001/events", {
         method: "POST",
