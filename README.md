@@ -1,49 +1,49 @@
 
 # Eventory
 
-## Purpose
+**Purpose**
 A lightweight backend API built with Python, Flask, and MongoDB to log and query web events such as page views and clicks. The application is containerized using Docker for easy deployment.
 
 **Design Decisions & Architectural Choices**
 
 
-## Features
+### Features
 - Create web events via `POST /events`
 - Query events via `GET /events`
 - Filter by event type and a timerange
 - Dockerized setup with MongoDB
 
-## Tech Stack
+### Tech Stack
 - Python 3
 - Flask
 - MongoDB
 - Docker & Docker Compose
-
----
 
 ## Getting Started
 ### Prerequisites
 #### Docker
 **CLI Command Notes** *- if using Docker Desktop then use ```docker compose``` instead of ```docker-compose``` for all commands.* 
 
-**Option 1**: Install Docker Desktop (one-click-install)
+- **Option 1**: Install Docker Desktop (one-click-install)
+
 Use this method for an easy one-click-install of both the Docker Engine and Docker Compose, which are both needed to run Eventory. 
 
-    **Docker Desktop Install Docs** (tested Docker Desktop Version: **4.43.2 (199162)**)
-        - **Windows**: https://docs.docker.com/desktop/setup/install/windows-install/
-        - **MacOS**: https://docs.docker.com/desktop/setup/install/mac-install/
-        - **Linux**: https://docs.docker.com/desktop/setup/install/linux/
+**Docker Desktop Install Docs** (tested Docker Desktop Version: **4.43.2 (199162)**)
+    - **Windows**: https://docs.docker.com/desktop/setup/install/windows-install/
+    - **MacOS**: https://docs.docker.com/desktop/setup/install/mac-install/
+    - **Linux**: https://docs.docker.com/desktop/setup/install/linux/
 
-**Option 2**: Install Docker Engine & Docker Compose
+- **Option 2**: Install Docker Engine & Docker Compose
+
 This option includes two separate installs (Docker Engine, Docker Compose). 
 
-    1. **Docker Engine Install Docs** (tested on docker engine version: **28.3.2**)
-        - **Ubuntu**: https://docs.docker.com/engine/install/ubuntu/
-        - **Centos**: https://docs.docker.com/engine/install/centos/
-        - **Debian**: https://docs.docker.com/engine/install/debian/
+1. **Docker Engine Install Docs** (tested on docker engine version: **28.3.2**)
+    - **Ubuntu**: https://docs.docker.com/engine/install/ubuntu/
+    - **Centos**: https://docs.docker.com/engine/install/centos/
+    - **Debian**: https://docs.docker.com/engine/install/debian/
 
-    2. **Docker Compose Install Docs**(tested on docker compose version: **v2.38.2-desktop.1**)
-        - **Docker Compose**: https://docs.docker.com/compose/install/
+2. **Docker Compose Install Docs**(tested on docker compose version: **v2.38.2-desktop.1**)
+    - **Docker Compose**: https://docs.docker.com/compose/install/
 
 ### Running the App
 1. **Clone the Repository**
@@ -52,15 +52,14 @@ This option includes two separate installs (Docker Engine, Docker Compose).
     cd eventory
     ```
 2. **Start/Launch Docker**
+    - **Option 1**: start docker *(Docker Engine & Docker Compose installation)*
+        - make sure docker is running before using the app using. See the following docs for help.
+            - **Docker Engine**: https://docs.docker.com/engine/ 
+            - **Docker Compose**: https://docs.docker.com/compose/cli-command/ 
 
-    **Option 1**: start docker *(Docker Engine & Docker Compose installation)*
-    - make sure docker is running before using the app using. See the following docs for help.
-        - **Docker Engine**: https://docs.docker.com/engine/ 
-        - **Docker Compose**: https://docs.docker.com/compose/cli-command/ 
+    - **Option 2**: launch docker desktop *(Docker Desktop installation)*
 
-    **Option 2**: launch docker desktop *(Docker Desktop installation)*
-
-3. *(Optional)* Check that docker is running
+3. *(Optional)* **Check that docker is running**
     - CLI Command: 
         ```
         docker run hello-world
@@ -121,7 +120,7 @@ No authentication is required for any endpoint.
 ## Consuming the API from Another App
 You can interact with this API from any frontend or backend application using HTTP requests.
 
-Example: JavaScript(```fetch```)
+- **JavaScript Example**:
     ```javascript
     // Log an event
     fetch('http://localhost:5000/events', {
