@@ -40,7 +40,7 @@ Installation Docs:
 
 
 ##### Option 2: Install Docker Engine & Docker Compose
-This option includes to separate installs (Docker Engine, Docker Compose). 
+This option includes two separate installs (Docker Engine, Docker Compose). 
 
     1. Docker Engine (tested on docker engine version: 28.3.2)
         - How to install docker engine on Ubuntu: https://docs.docker.com/engine/install/ubuntu/
@@ -52,9 +52,10 @@ This option includes to separate installs (Docker Engine, Docker Compose).
 
 ### Running the App
 1. Clone the Repository
-    git clone https://github.com/your-username/web-events-api.git
+    ```
+    git clone https://github.com/tristabug/eventory.git
     cd eventory
-
+    ```
 2. Start/Launch Docker
     a. Run Docker (Docker Engine & Docker Compose installs)
         Make sure docker is running before using the app using the linked docs below.
@@ -65,18 +66,24 @@ This option includes to separate installs (Docker Engine, Docker Compose).
         - Launch Docker Desktop 
 
 3. (Optional) Check that Docker is Running - using a CLI
-    - CLI Command: docker run hello-world
+    - CLI Command: 
+        ```
+        docker run hello-world
+        ```
+
     - Expected Output:
+        ```
         Hello from Docker!
         This message shows that your installation appears to be working correctly.
+        ```
 
 4. Check that port 5001 is free on your machine 
     a. On Windows: powershell or command prompt
-            netstat -aon | findstr LISTENING
+            ``` netstat -aon | findstr LISTENING ```
     b. On Mac: terminal
-            lsof -i -n -P | grep LISTEN
+            ```lsof -i -n -P | grep LISTEN ```
     c. On Linux: ss
-            ss -tuln
+            ``` ss -tuln ```
 
 5. Docker: build images & start containers using a CLI
     a. Navigate to the eventory directory
