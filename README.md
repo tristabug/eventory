@@ -97,10 +97,10 @@ This option includes to separate installs (Docker Engine, Docker Compose).
 
 ## API Endpoints
 No authentication is required for any endpoint.
-- Show All Events: GET /events
-- Show Filtered Events: GET /events
-- Show the Count of Events by Type: GET /events/stats
-- Create an Event: POST /events
+- [Show All Events](docs/get.md#show-all-events): GET /events
+- [Show Filtered Events](docs/get.md#show-filtered-events): GET /events
+- [Show the Count of Events by Type](docs/get.md#show-events-by-the-event-type-and-count): GET /events/stats
+- [Create an Event](docs/post.md#create-an-event): POST /events
 
 ---
 

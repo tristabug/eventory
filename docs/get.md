@@ -29,7 +29,7 @@ CLI: curl "http://127.0.0.1:5001/events?start=<YYYY-MM-DDThh:mm:ss>&end=<YYYY-MM
 BROWSER: http://127.0.0.1:5001/events?start=<YYYY-MM-DDThh:mm:ss>&end=<YYYY-MM-DDThh:mm:ss>
     - EX (start = 7/1/2025 @ 12AM, end = 7/31/2025 @ 11:59pm): http://127.0.0.1:5001/events?start=2025-07-01T00:00:00&end=2025-07-31T23:59:59
 
-## Show Filtered Events 
+## Show Events by the Event Type and it's Count 
 Show all web events by type with their count.
 
 CLI: curl http://127.0.0.1:5001/events/stats
