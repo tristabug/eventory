@@ -1,6 +1,6 @@
 import pytest
 from app import create_app
-from extensions import mongo
+from db import mongo
 
 @pytest.fixture
 def client():

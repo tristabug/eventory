@@ -3,7 +3,7 @@ from datetime import datetime
 from bson.json_util import dumps
 from query_utils import build_query, build_stats_pipeline
 from models import validate_event
-from extensions import mongo
+from db import mongo
 
 events_bp = Blueprint('events', __name__)
 

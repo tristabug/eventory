@@ -1,11 +1,11 @@
 from flask import Flask
-from extensions import mongo
+from db import init_mongo
 from routes import events_bp
 
 def create_app():
     app = Flask(__name__)
     app.config["MONGO_URI"] = "mongodb://mongo:27017/eventsdb"
-    mongo.init_app(app)
+    init_mongo(app)         
     app.register_blueprint(events_bp)
     return app
 
