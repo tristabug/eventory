@@ -66,3 +66,9 @@ Expected Output:
     ```
     docker compose run web pytest
     ```
+
+- **Find the Flask version** used inside the container:
+    ```
+    docker exec -it <container_name_or_id> bash
+    pip show flask
+    ```

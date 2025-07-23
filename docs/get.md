@@ -1,51 +1,77 @@
-# Show Events
-- URL: ``` /events/ ```
+# GET
+*get events*
+
+- URL: ``` /events ```
 - Method: ``` GET ```
 - Auth Required: no
 
-## Show ALL Events
-**Manual Testing**
-- **CLI**: ``` curl http://127.0.0.1:5001/events ```
-- **BROWSER**: ``` http://127.0.0.1:5001/events ```
+### Query Templates
+**Events by event type** ( <event_type> )
+- curl: ``` curl "http://127.0.0.1:5001/events?type=<event_type>" ```
+- url: ``` http://127.0.0.1:5001/events?type=<event_type> ```
 
-## Show Events by Event Type
-**Params**: Replace ``` <event_type> ``` with the type of event enclosed in double quotes.
+**Events within a date range** ( <YYYY-MM-DDThh:mm:ss> )
+*Note: dates must be in ISO 8601 date and time*
 
-**Manual Testing**
-- **CLI**: ``` curl "http://127.0.0.1:5001/events?type=<event_type>" ```
-**Example** if event_type = page_view: 
-    ``` 
-    curl "http://127.0.0.1:5001/events?type=page_view" 
-    ```
+- curl: ``` curl "http://127.0.0.1:5001/events?start=<YYYY-MM-DDThh:mm:ss>&end=<YYYY-MM-DDThh:mm:ss>" ```
+- url: ``` http://127.0.0.1:5001/events?start=<YYYY-MM-DDThh:mm:ss>&end=<YYYY-MM-DDThh:mm:ss> ```
 
-- **BROWSER**: ``` http://127.0.0.1:5001/events?type=<event_type> ```
-**Example** if event_type = page_view: 
-    ``` 
-    http://127.0.0.1:5001/events?type=page_view 
-    ```
+## Examples
+**To Get**: all events.
+curl:
+```
+curl http://127.0.0.1:5001/events
+``` 
 
-## Show Events in a Timerange
-**Params**: Replace ``` <YYYY-MM-DDThh:mm:ss> ``` with the date (YYYY-MM-DD) and ISO 8601 time (hh:mm:ss).
+url: ``` http://127.0.0.1:5001/events ```
 
-- **CLI**: ``` curl "http://127.0.0.1:5001/events?start=<YYYY-MM-DDThh:mm:ss>&end=<YYYY-MM-DDThh:mm:ss>" ```
-**Example** for a timerange  where start = 7/1/2025 @ 12AM and end = 7/31/2025 @ 11:59pm: 
-    ``` 
-    curl "http://127.0.0.1:5001/events?start=2025-07-01T00:00:00&end=2025-07-31T23:59:59" 
-    ```
+**To Get**: all 'page view' event types.
+curl:
+```
+curl "http://127.0.0.1:5001/events?type=page_view"
+``` 
 
-- **BROWSER**: ``` http://127.0.0.1:5001/events?start=<YYYY-MM-DDThh:mm:ss>&end=<YYYY-MM-DDThh:mm:ss> ```
-**Example** for a timerange  where start = 7/1/2025 @ 12AM and end = 7/31/2025 @ 11:59pm: 
-   ``` 
-   http://127.0.0.1:5001/events?start=2025-07-01T00:00:00&end=2025-07-31T23:59:59 
-   ```
+url: 
+```
+http://127.0.0.1:5001/events?type=page_view
+```
 
-## Show Events by the Event Type and Count 
-Show all web events by type with their count.
+**To Get**: all 'click' event types.
+curl:
+```
+curl "http://127.0.0.1:5001/events?type=click"
+``` 
 
-- **CLI**: ``` curl http://127.0.0.1:5001/events/stats ```
-- **BROWSER**: ``` http://127.0.0.1:5001/events/stats ```
+url: 
+```
+http://127.0.0.1:5001/events?type=click
+```
 
-# Success Response
+**To Get**: all events within a date range (7/1/2025 @12:00:00 am - 7/31/2025 @11:59:59 pm).
+```
+curl "http://127.0.0.1:5001/events?start=2025-07-01T00:00:00&end=2025-07-31T23:59:59"
+``` 
+
+url: 
+```
+http://127.0.0.1:5001/events?start=2025-07-01T00:00:00&end=2025-07-31T23:59:59
+```
+
+## Aggregations 
+*get summarized views of data*
+
+**Aggregation**: get event counts by event type.
+curl
+```
+curl http://127.0.0.1:5001/events/stats
+``` 
+
+url
+```
+http://127.0.0.1:5001/events/stats
+``` 
+
+# Success Responses
 **Condition**: User can't see any events, because no events exist.
 - Code: ```200``` ```OK```
 - Content:

@@ -7,6 +7,7 @@ A lightweight backend API built with Python, Flask, and MongoDB to log and query
 **Design Decisions & Architectural Choices**
 
 
+
 ### Features
 - Create web events via `POST /events`
 - Query events via `GET /events`
@@ -14,10 +15,12 @@ A lightweight backend API built with Python, Flask, and MongoDB to log and query
 - Dockerized setup with MongoDB
 
 ### Tech Stack
-- Python 3
-- Flask
-- MongoDB
-- Docker & Docker Compose
+- Python: 3.10
+- Flask: 3.1.1
+- MongoDB: v5.x
+- Docker Engine: 28.3.2
+- Docker Compose: v2.38.2-desktop.1
+- Docker Desktop: 4.43.2 (199162)
 
 # Setup Instructions
 **Prerequisites**
@@ -68,28 +71,7 @@ No authentication is required for any endpoint.
 - [Show the Count of Events by Type](docs/get.md#show-events-by-the-event-type-and-count): GET /events/stats
 - [Create an Event](docs/post.md#create-an-event): POST /events
 
----
-
-### Consuming the API from Another App
-You can interact with this API from any frontend or backend application using HTTP requests.
-
-**JavaScript Example**:
-```javascript
-// Log an event
-fetch('http://localhost:5000/events', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-        event_type: 'page_view',
-        timestamp: new Date().toISOString()
-    })
-});
-
-// Query events
-fetch('http://localhost:5000/events?type=click')
-    .then(res => res.json())
-    .then(data => console.log(data));
-```
+*See [GET examples](docs/get.md) and [POST examples](docs/post.md).*
 
 ---
 
