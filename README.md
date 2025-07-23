@@ -4,9 +4,11 @@
 **Purpose**
 A lightweight backend API built with Python, Flask, and MongoDB to log and query web events such as page views and clicks. The application is containerized using Docker for easy deployment.
 
-**Design Decisions & Architectural Choices**
+### Design Decisions & Architectural Choices
+**Python Library for MongoDB**: PyMongo
+- Python's recommended way to work with MongoDB. 
 
-
+**Schema/No Schema**: considering that there's only one resource (events) and neither MongoDB or PyMongo require a schema, I decided to just use query validations for POST requests. 
 
 ### Features
 - Create web events via `POST /events`
