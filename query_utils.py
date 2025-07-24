@@ -3,11 +3,18 @@ from datetime import datetime
 def build_query(args):
     query = {}
     
-    # filter by event type
+    allowed_types = {"page_view", "click"}
+
+    # event type - validate and filter
     if 'type' in args:
+        event_type = args.get("type")
+
+        if event_type not in allowed_types:
+            raise ValueError(f"Invalid event type: {event_type}")
+        
         query['event_type'] = args['type']
 
-    # filter by date range
+    # date range - validate and filter
     start = args.get('start')
     end = args.get('end')
     timestamp_filter = {}
