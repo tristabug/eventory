@@ -66,9 +66,18 @@ Expected Output:
     ```
     docker compose run web pytest
     ```
+    OR
+    ```
+    docker compose run -rm web pytest
+    ```
 
 - **Find the Flask version** used inside the container:
     ```
     docker exec -it <container_name_or_id> bash
     pip show flask
+    ```
+
+- **Cleanup orphaned containers** not associated with any service in docker-compse.yml:
+    ```
+    docker compose down --remove-orphans
     ```
