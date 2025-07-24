@@ -10,6 +10,8 @@ A lightweight backend API built with Python, Flask, and MongoDB to log and query
 
 **Schema/No Schema**: considering that there's only one resource (events) and neither MongoDB or PyMongo require a schema, I decided to just use query validations for POST requests. 
 
+**Modularizing Tests**: considering the amount of test cases I decided to modularize them to make them easier to maintain and understand. 
+
 ### Features
 - Create web events via `POST /events`
 - Query events via `GET /events`

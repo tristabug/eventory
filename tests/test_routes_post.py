@@ -67,3 +67,16 @@ def test_post_event_invalid_timestamp(client):
     })
     assert response.status_code == 400
     assert b"Invalid timestamp format" in response.data
+
+def test_post_event_payload_too_large(client):
+    large_string = "x" * (2 * 1024 * 1024 + 1)
+
+    response = client.post('/events', json={
+        "event_type": "page_view",
+        "timestamp": "2025-07-23T20:00:00",
+        "user_id": large_string,
+        "source_url": "https://example.com"
+    })
+
+    assert response.status_code == 413
+    assert b"Payload too large" in response.data
