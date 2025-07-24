@@ -1,4 +1,7 @@
+# core
 flask
 flask_pymongo
 pymongo
+
+# testing dependencies
 pytest

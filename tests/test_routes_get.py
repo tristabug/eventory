@@ -1,4 +1,3 @@
-
 from datetime import datetime, timedelta
 
 def test_get_events(client):

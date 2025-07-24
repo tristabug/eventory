@@ -6,7 +6,7 @@ from query_utils import build_query, build_stats_pipeline
 from models import validate_event
 from db import mongo
 
-# JSON Encoder
+# json encoder
 class JSONEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, ObjectId):

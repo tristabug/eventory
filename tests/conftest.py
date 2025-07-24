@@ -17,4 +17,3 @@ def client():
 
     with app.app_context():
         mongo.db.events.delete_many({})
-
