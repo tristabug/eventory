@@ -80,7 +80,7 @@ No authentication is required for any endpoint.
 ---
 
 # Unit Tests
-Run the application's unit tests within the docker container. 
+Run the application's unit tests within the docker container. This currently expects a *working* MongoDB. 
 
 1. Navigate to the eventory directory. Then build and start the docker image and container.
         ``` 
@@ -88,9 +88,14 @@ Run the application's unit tests within the docker container.
         docker compose up --build
         ``` 
 
-3. Run the unit tests inside the container.
+2. Run ALL tests inside the container.
     ```
     docker compose run web pytest
+    ```
+
+3. Run specifc test files inside the container.
+    ```
+    docker compose run web pytest tests/TEST_FILE_NAME.py
     ```
 
 ---
