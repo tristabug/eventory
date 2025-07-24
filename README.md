@@ -93,9 +93,15 @@ Run the application's unit tests within the docker container. This currently exp
     docker compose run web pytest
     ```
 
-3. Run specifc test files inside the container.
+3. Run a specifc test file inside the container.
+    unit test file
     ```
-    docker compose run web pytest tests/TEST_FILE_NAME.py
+    docker compose run web pytest tests/unit/TEST_FILE_NAME.py
+    ```
+
+    integration test file
+    ```
+    docker compose run web pytest tests/integration/TEST_FILE_NAME.py
     ```
 
 ---

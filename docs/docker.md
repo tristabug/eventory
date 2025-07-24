@@ -53,7 +53,7 @@ Expected Output:
 ## Docker Commands
 *all commands need to be made from within the app directory that holds the docker-compose.yml and Dockerfile files.*
 
-- **Build & Start** the docker image and container:
+- **Build and start** the docker image and container:
     ```
     docker compose up --build 
     ```
@@ -62,13 +62,24 @@ Expected Output:
     docker compose down 
     ```
 
-- **Run the unit tests** inside the container:
+- **Run all tests** inside the container:
     ```
     docker compose run web pytest
     ```
     OR
     ```
     docker compose run -rm web pytest
+    ```
+
+- **Run one test file** inside the container:
+    unit test file
+    ```
+    docker compose run web pytest tests/unit/TEST_FILE_NAME.py
+    ```
+    
+    integration test file
+    ```
+    docker compose run web pytest tests/integration/TEST_FILE_NAME.py
     ```
 
 - **Find the Flask version** used inside the container:
@@ -80,4 +91,9 @@ Expected Output:
 - **Cleanup orphaned containers** not associated with any service in docker-compse.yml:
     ```
     docker compose down --remove-orphans
+    ```
+
+- **Find containers** associated with the current docker compose project:
+    ```
+    docker compose ps
     ```
