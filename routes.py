@@ -37,7 +37,11 @@ def add_event():
 # GET /events
 @events_bp.route('/events', methods=['GET'])
 def get_events():
-    query = build_query(request.args)
+    try:
+        query = build_query(request.args)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    
     events = list(mongo.db.events.find(query))
     return Response(json.dumps(events, cls=JSONEncoder), mimetype='application/json'), 200
 
