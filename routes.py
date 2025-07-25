@@ -21,18 +21,13 @@ events_bp = Blueprint('events', __name__)
 @events_bp.route('/events', methods=['POST'])
 def add_event():
     data = request.get_json()
-
-    # validate incoming event data
-    valid, message = validate_event(data)
-    if not valid:
-        return jsonify({"error": message}), 400
+    valid, errors = validate_event(data)
     
-    # convert timestamp string to datetime
-    data['timestamp'] = datetime.fromisoformat(data['timestamp'])
-
-    # insert into mongodb
-    mongo.db.events.insert_one(data)
-    return jsonify({"message": "Event added successfully"}), 201
+    if not valid:
+        return jsonify({"errors": str(errors)}), 400
+    else: # insert into mongodb
+        mongo.db.events.insert_one(data)
+        return jsonify({"message": "Event added successfully"}), 201
 
 # GET /events
 @events_bp.route('/events', methods=['GET'])

@@ -1,5 +1,6 @@
 from datetime import datetime
 
+# GET Query Validation
 def build_query(args):
     query = {}
     

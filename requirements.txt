@@ -2,6 +2,7 @@
 flask
 flask_pymongo
 pymongo
+cerberus
 
 # testing dependencies
 pytest

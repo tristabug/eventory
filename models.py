@@ -1,35 +1,27 @@
-import re
 from datetime import datetime
-from urllib.parse import urlparse
+from cerberus import Validator
+
+event_schema = {
+    "event_type": {"type": "string", "required": True, "allowed": ["page_view", "click"]}, 
+    "timestamp": {"type": "datetime", "required": True},
+    "user_id": {"type": "string", "required": True, "regex": r"^user\d+$"}, # ex: user1, user123
+    "source_url":  {"type": "string", "required": True, "regex": r"^(https?|ftp)://[^\s/$.?#].[^\s]*$"}
+}
+
+# validates new events (POST)
+validator = Validator(event_schema)
 
 def validate_event(data):
-    required_fields = ['event_type', 'timestamp', 'user_id', 'source_url']
+    iso_errors = None
 
-    # check for missing or empty fields
-    for field in required_fields:
-        if field not in data:
-            return False, f"Missing field: {field}"
-        
-        if data[field] is None or (isinstance(data[field], str) and not data[field].strip()):
-            return False, f"Empty field: {field}"
-
-    # validate event_type
-    if not isinstance(data['event_type'], str) or not data['event_type'].strip():
-            return False, "Invalid event_type: must be a non-empty string"
-
-    # validate timestamp format
     try:
-        datetime.fromisoformat(data['timestamp'])
-    except ValueError:
-        return False, "Invalid timestamp format: must be ISO 8601"
+        data['timestamp'] = datetime.strptime(data['timestamp'], "%Y-%m-%dT%H:%M:%SZ")
+    except Exception as e:
+        iso_errors = str(e)
 
-    # validate user_id
-    if not isinstance(data['user_id'], str) or not re.match(r'^[a-zA-Z0-9_-]+$', data['user_id']):
-        return False, "Invalid user_id: must be alphanumeric with optional underscores or hyphens"
+    is_valid = validator.validate(data)
+    errors = validator.errors
 
-    # validate source_url
-    parsed_url = urlparse(data['source_url'])
-    if not all([parsed_url.scheme, parsed_url.netloc]):
-        return False, "Invalid source_url: must be a valid URL"
-
-    return True, "Valid"
+    if not is_valid or iso_errors:
+        return False, {"schema_errors": errors, "timestamp_error": iso_errors}
+    return True, None
